@@ -1,0 +1,26 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "week14homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LibbyKnight/burger.git"
+  },
+  "author": "bsl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LibbyKnight/burger/issues"
+  },
+  "homepage": "https://github.com/LibbyKnight/burger#readme",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "expres": "0.0.5",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.7",
+    "mysql": "^2.13.0"
+  }
+}
