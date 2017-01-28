@@ -16,7 +16,3 @@ connection.connect();
 
 
 module.exports = connection;
-
-
-
-app.listen(PORT);
