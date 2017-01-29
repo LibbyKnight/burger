@@ -1,0 +1,64 @@
+
+
+
+
+<div class="jumbotron">
+	 <div class="container">
+
+
+		<img src="http://giphy.com/gifs/matthewjocelyn-dancing-dance-burger-xTiTnwj1LUAw0RAfiU" align="center">
+
+  		<h1 style="color: red; text-align: center">Eat-Da-Burger!</h1>
+
+
+	<form class="create-form" action="/" method="POST">
+
+	<div class="form-group">
+		
+		<textarea id="newburger" name="userInput" row="8" cols="40"></textarea>
+	</div>
+	
+	<button type="submit">Add to menu!</button>
+
+	
+</form>
+<br>
+<div>Enter a burger you want to eat. Click the "Submit" button</div>
+
+
+  
+  <div class="col-md-5" id=notEaten>
+			<h3>Ready to Eat</h3>
+			<ul>
+				{{#each burgers}}
+						<li>
+							<h4>{{this.id}}. {{this.burger_name}}
+								<form action="burgers/updateOne/{{this.id}}" method="POST">
+									<input type="hidden" name="devoured" value="true">
+									<button type="submit" class="btn btn-primary btn-lg">Devour it!</button>
+								</form>
+							</h4>
+						</li>
+				{{/each}}
+			</ul>
+		</div>
+
+		<h3>Devoured!</h3>
+
+		<div class="col-md-5" id=eaten>
+
+		<ul>
+				{{#each devoured}}
+						<li>
+							<h4>{{this.id}}. {{this.burger_name}}
+								<form action="burgers/updateOne/{{this.id}}" method="POST">
+									<input type="hidden" name="devoured" value="true">
+									<button type="submit" class="btn btn-primary btn-lg">Devour it!</button>
+								</form>
+							</h4>
+						</li>
+				{{/each}}
+			</ul>
+
+	</div>
+</div>
