@@ -3,10 +3,9 @@ var methodOverride = require ("method-override");
 var bodyParser = require ("body-parser");
 
 
-module exports [orm]
+var app = express();
+var port = 3000;
 
-var orm = { insert function (),
-delete ""
-update ""
-
-	}
+app.listen(port, function() {
+  console.log("Listening on PORT " + port);
+});

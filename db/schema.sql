@@ -5,7 +5,7 @@ USE `burgers_db`;
 CREATE TABLE `burgers` (
   `id` int NOT NULL AUTO_INCREMENT,
   `burger_name` varchar(255) NOT NULL,
-  `devoured` boolean DEFAULT FALSE,
+  `devoured` boolean DEFAULT FALSE NULL,
   `date` timestamp DEFAULT current_timestamp NOT NULL,
   PRIMARY KEY(id)
 );
