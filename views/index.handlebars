@@ -11,7 +11,7 @@
 					{{#unless this.devoured}}
 						<li>
 							<h4>{{this.id}}. {{this.burger_name}}
-								<form action="burgers/updateOne/{{this.id}}?_method=PUT" method="POST">
+								<form action="/{{this.id}}?_method=PUT" method="POST">
 									<input type="hidden" name="devoured" value="true">
 									<button type="submit" class="btn btn-primary btn-lg">Devour it!</button>
 								</form>
@@ -43,12 +43,12 @@
 
 <div class="jumbotron">
 
-		<img src="http://giphy.com/gifs/matthewjocelyn-dancing-dance-burger-xTiTnwj1LUAw0RAfiU" align="center">
+		<iframe src="//giphy.com/embed/xTiTnwj1LUAw0RAfiU" width="480" height="417" frameBorder="0" class="giphy-embed" allowFullScreen align="center"></iframe> 
 
   		<h1 style="color: red; text-align: center">Eat-Da-Burger!</h1>
 
 
-	<form class="create-update-form" action="burgers/update/:id" method="POST">
+	<form class="create-update-form" action="update/:id" method="POST">
 
 	<div class="form-group">
 		
