@@ -4,7 +4,7 @@ var burger= {
 
 	selectAll: function(callback) {
 
-		orm.selectAll("burgers" function(res) {
+		orm.selectAll("burgers", function(res) {
 			callback(res);
 		});
 	},

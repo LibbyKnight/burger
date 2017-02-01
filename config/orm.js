@@ -40,7 +40,7 @@ var orm = {
 	//create
 	insertOne: function(cols, vals, callback) {
 
-		var queryString = ('INSERT INTO `burgers`' (cols.toString()) 'VALUES' (printQuestionMarks(vals.length)));
+		var queryString = ('INSERT INTO `burgers` (cols.toString()) VALUES (printQuestionMarks(vals.length))');
 
 			 console.log(queryString);
 
@@ -54,7 +54,7 @@ var orm = {
 	//update
 	updateOne: function(objColVals, condition, callback) {
 
-		var queryString = ('UPDATE `burgers` SET ' objToSql(objColVals) 'WHERE ' condition);
+		var queryString = ('UPDATE `burgers` SET (objToSql(objColVals)) WHERE condition');
 
     console.log(queryString);
     connection.query(queryString, function(err, result) {
