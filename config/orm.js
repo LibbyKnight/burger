@@ -28,9 +28,11 @@ function objToSql(ob) {
 
 var orm = {
 	//read/select
-	selectAll: function(callback) {
-		var queryString = ('SELECT * FROM `burgers`');
+	selectAll: function(table, callback) {
+		var queryString = ("SELECT * FROM " + table + ";");
 			 connection.query(queryString, function(err, result) {
+      // console.log(callback);
+
       if (err) {
         throw err;
       }
