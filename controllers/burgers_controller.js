@@ -4,7 +4,7 @@ var burgerJS = require('../models/burger.js');
 
 
 //read/selectall
-router.get('/', function(req, res) {
+router.get('/read', function(req, res) {
 		burgerJS.selectAll(function(data) {
 			var hbsObject = {
 				burgers: data
@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
 });
 
 //create/insert
-router.post('/', function(req, res) {
+router.post('/create', function(req, res) {
 		burgerJS.insertOne([
 			"burger_name", "devoured"
 		], [
