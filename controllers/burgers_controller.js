@@ -21,7 +21,7 @@ router.post('/create', function(req, res) {
 		], [
 		   req.body.burger_name, req.body.devoured
   ], function() {
-    res.redirect("/create");
+    res.redirect("/");
   });
 });
 
@@ -34,7 +34,7 @@ router.put('update/:id', function(req, res) {
   burgerJS.update({
     devoured: req.body.devoured
   }, condition, function() {
-    res.redirect("/update");
+    res.redirect("/");
   });
 });
 
