@@ -4,7 +4,7 @@ var burgerJS = require('../models/burger.js');
 
 
 //read/selectall
-router.get('/read', function(req, res) {
+router.get('/', function(req, res) {
 		burgerJS.selectAll(function(data) {
 			var hbsObject = {
 				burgers: data
@@ -21,12 +21,12 @@ router.post('/create', function(req, res) {
 		], [
 		   req.body.burger_name, req.body.devoured
   ], function() {
-    res.redirect("/");
+    res.redirect("/create");
   });
 });
 
 //update
-router.put('/:id', function(req, res) {
+router.put('update/:id', function(req, res) {
 
 		var condition = "id = " + req.params.id;
 	console.log("condition", condition);
@@ -34,7 +34,7 @@ router.put('/:id', function(req, res) {
   burgerJS.update({
     devoured: req.body.devoured
   }, condition, function() {
-    res.redirect("/");
+    res.redirect("/update");
   });
 });
 
