@@ -4,19 +4,19 @@ var burger= {
 
 	selectAll: function(callback) {
 
-		orm.selectAll(function(res) {
+		orm.selectAll("burgers" function(res) {
 			callback(res);
 		});
 	},
-	insertOne: function(callback) {
+	insertOne: function(cols, vals, callback) {
 
-		orm.insertOne(function(res) {
+		orm.insertOne("burgers", cols, vals, function(res) {
 			callback(res);
 		});
 	},
-	updateOne: function(callback) {
+	updateOne: function(objColVals, condition, callback) {
 
-		orm.updateOne(function(res) {
+		orm.updateOne("burgers", objColVals, condition, function(res) {
 			callback(res);
 		});
 	}

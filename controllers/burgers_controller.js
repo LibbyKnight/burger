@@ -1,34 +1,42 @@
 var express = require("express");
-var burgersJS = require('../models/burger.js');
+var router = express.Router();
+var burgerJS = require('../models/burger.js');
 
 
-
-module.exports = function(app, connection) {
-
-	//read/select
-	app.get('/', function(req, res) {
-		queries.selectAll(connection, function(err, data) {
-			console.log(err, data);
-			res.render('index', {
+//read/selectall
+router.get('/', function(req, res) {
+		burgerJS.selectAll(function(data) {
+			var hbsObject = {
 				burgers: data
-			})
-		}),
-	//create/insert
-	app.post('/', function(req, res) {
-		var burger_name = req.body.burger_name;
-		queries.insertOne(connection, burger_name, function(err, results) {
-			res.redirect('/');
-		})
-	});
-	//update
-	app.post('/devour', function(req, res) {
+		};
+   console.log(hbsObject);
+    res.render("index", hbsObject);
+  });
+});
 
-		var id = req.params.id;
-		queries.updateOne(connection, id, function(err, data) {
-			console.log(err, data);
-			res.redirect('/');
-			})
+//create/insert
+router.post('/', function(req, res) {
+		burgerJS.insertOne([
+			"burger_name", "devoured"
+		], [
+		   req.body.burger_name, req.body.devoured
+  ], function() {
+    res.redirect("/");
+  });
+});
 
-		})
-};
+//update
+router.put('/:id', function(req, res) {
 
+		var condition = "id = " + req.params.id;
+	console.log("condition", condition);
+
+  burgerJS.update({
+    devoured: req.body.devoured
+  }, condition, function() {
+    res.redirect("/");
+  });
+});
+
+
+module.exports = router;

@@ -1,19 +1,70 @@
 var connection = require('../config/connection.js');
 
 
-module.exports = {
 
-	selectAll: function(connection, columns, callback) {
-		cconnection.query('SELECT * FROM `burgers`', [columns || '*'], callback)
-		},
+function printQuestionMarks(num) {
+  var arr = [];
 
-	insertOne: function(connection, burger, callback) {
+  for (var i = 0; i < num; i++) {
+    arr.push("?");
+  }
 
-		connection.query('INSERT INTO `burgers` (burger_name, devoured) VALUES (?, false)', [burger], callback)
-	},
+  return arr.toString();
+}
 
-	updateOne: function(connection, id, callback) {
+// Helper function for SQL syntax.
+function objToSql(ob) {
+  var arr = [];
 
-		connection.query('UPDATE `burgers` SET `devoured` = true WHERE `id` = ?', [id], callback)
-	}
-};
+  for (var key in ob) {
+    if (Object.hasOwnProperty.call(ob, key)) {
+      arr.push(key + "=" + ob[key]);
+    }
+  }
+
+  return arr.toString();
+}
+
+
+var orm = {
+	//read/select
+	selectAll: function(callback) {
+		var queryString = ('SELECT * FROM `burgers`');
+			 connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      callback(result);
+    });
+  },
+	//create
+	insertOne: function(cols, vals, callback) {
+
+		var queryString = ('INSERT INTO `burgers`' (cols.toString()) 'VALUES' (printQuestionMarks(vals.length)));
+
+			 console.log(queryString);
+
+    connection.query(queryString, vals, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      callback(result);
+    });
+  },
+	//update
+	updateOne: function(objColVals, condition, callback) {
+
+		var queryString = ('UPDATE `burgers` SET ' objToSql(objColVals) 'WHERE ' condition);
+
+    console.log(queryString);
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      callback(result);
+    });
+  }
+}
+
+module.exports = orm;
