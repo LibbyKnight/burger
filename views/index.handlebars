@@ -2,7 +2,7 @@
 
 
 
-
+<div class="container">
   
   <div class="col-md-5" id=notEaten>
 			<h3>Ready to Eat</h3>
@@ -11,34 +11,30 @@
 					{{#unless this.devoured}}
 						<li>
 							<h4>{{this.id}}. {{this.burger_name}}
-								<form action="burgers/updateOne/{{this.id}}" method="POST">
+								<form action="burgers/updateOne/{{this.id}}?_method=PUT" method="POST">
 									<input type="hidden" name="devoured" value="true">
 									<button type="submit" class="btn btn-primary btn-lg">Devour it!</button>
 								</form>
 							</h4>
 						</li>
-				{{/each}}
 				{{/unless}}
+				{{/each}}
 			</ul>
 		</div>
+	</div>
 
-		<h3>Devoured!</h3>
-
+		
 		<div class="col-md-5" id=eaten>
+			<h3>Devoured!</h3>
 
 		<ul>
 				{{#each burgers}}
 					{{#if this.devoured}}
 						<li>
-							<h4>{{this.id}}. {{this.burger_name}}
-								<form action="burgers/updateOne/{{this.id}}" method="POST">
-									<input type="hidden" name="devoured" value="false">
-									<button type="submit" class="btn btn-primary btn-lg">Devour it!</button>
-								</form>
-							</h4>
+							<h4>{{this.id}} {{this.burger_name}}</h4>
 						</li>
-				{{/each}}
 				{{/if}}
+				{{/each}}
 			</ul>
 
 	</div>
@@ -46,24 +42,22 @@
 
 
 <div class="jumbotron">
-	 <div class="container">
-
 
 		<img src="http://giphy.com/gifs/matthewjocelyn-dancing-dance-burger-xTiTnwj1LUAw0RAfiU" align="center">
 
   		<h1 style="color: red; text-align: center">Eat-Da-Burger!</h1>
 
 
-	<form class="create-update-form" action="/" method="POST">
+	<form class="create-update-form" action="burgers/update/:id" method="POST">
 
 	<div class="form-group">
 		
-		<textarea id="newburger" name="userInput" row="8" cols="40"></textarea>
-	</div>
+		<textarea type="text" name="name" row="8" cols="40"></textarea>
+	
 	
 	<button type="submit">Add to menu!</button>
 
-	
-</form>
 <br>
-<div>Enter a burger you want to eat. Click the "Submit" button</div>
+<h5>Enter a burger you want to eat. Click the "Add to menu!" button</h5 align="center">
+	</div>
+</form>
